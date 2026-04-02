@@ -1,12 +1,12 @@
 # Docker
 
-🐳 Guia de Instalação Docker
+## Guia de Instalação Docker
 Este guia ajuda a configurar o ambiente Docker necessário para executar este projeto. 
-📋 Pré-requisitos
+## Pré-requisitos
 Windows: Windows 10/11 com WSL2 habilitado.
 macOS: Chip Intel ou Apple Silicon (M1/M2/M3).
 Linux: Distribuição 64 bits (Ubuntu, Debian, CentOS, etc.). 
-💻 1. Instalação (Windows e macOS)
+## 1. Instalação (Windows e macOS)
 A maneira mais fácil é instalar o Docker Desktop. 
 Baixe o instalador: Docker Desktop
 Execute o arquivo baixado e siga o assistente de instalação.
@@ -15,7 +15,7 @@ Inicie o Docker Desktop após a instalação.
 YouTube
 YouTube
  +3
-🐧 2. Instalação (Linux - Ubuntu/Debian)
+## 2. Instalação (Linux - Ubuntu/Debian)
 Execute os comandos no seu terminal para instalar o Docker Engine: 
 bash
 # Atualize o índice de pacotes
@@ -36,12 +36,12 @@ echo \
 # Instale o Docker Engine
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-🔓 Rodar Docker sem sudo (Opcional - Recomendado) 
+## Rodar Docker sem sudo (Opcional - Recomendado) 
 Para evitar digitar sudo em todos os comandos docker:
 bash
 sudo usermod -aG docker $USER
 # Reinicie o computador ou faça logout/login
-✅ 3. Verificação
+## 3. Verificação
 Abra o terminal (ou PowerShell) e execute: 
 bash
 docker --version
