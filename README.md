@@ -1,6 +1,6 @@
 # Dockerrr
 
-## Guia de Instalação Docker
+## Guia de Instalação Dockerrr
 Este guia ajuda a configurar o ambiente Docker necessário para executar este projeto. 
 ## Pré-requisitos
 Windows: Windows 10/11 com WSL2 habilitado.
