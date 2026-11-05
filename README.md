@@ -1,4 +1,4 @@
-# Docker
+# Dockerrr
 
 ## Guia de Instalação Docker
 Este guia ajuda a configurar o ambiente Docker necessário para executar este projeto. 
@@ -50,7 +50,7 @@ Se a mensagem "Hello from Docker!" aparecer, a instalação foi bem-sucedida.
 YouTube
 YouTube
  +2
-🚀 Como rodar o projeto
+## Como rodar o projeto
 Após clonar o repositório, execute na pasta do projeto: 
 bash
 docker compose up --build
