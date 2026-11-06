@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-labelledby="t d">
+  <title id="t">Docker: do Dockerfile ao container</title>
+  <desc id="d">O Dockerfile vira uma imagem com docker build, e a imagem vira um container em execução com docker run. As imagens são enviadas ao registry com docker push e baixadas com docker pull. O Docker Compose sobe vários containers de uma vez a partir de um único arquivo.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#121c33"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.32" r="0.6">
+      <stop offset="0" stop-color="#2496ed" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#2496ed" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#16213a"/>
+      <stop offset="1" stop-color="#111a2e"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#1b2742" stroke-width="1"/>
+    </pattern>
+    <marker id="fwd" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#38bdf8"/>
+    </marker>
+    <marker id="back" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#94a3b8"/>
+    </marker>
+    <style>
+      text { font-family: Inter, "Segoe UI", Helvetica, Arial, sans-serif; }
+      .mono, .mono text { font-family: "JetBrains Mono", "SFMono-Regular", Consolas, "DejaVu Sans Mono", monospace; }
+      .h { fill: #f1f5f9; font-weight: 700; }
+      .p { fill: #cbd5e1; font-size: 13px; }
+      .s { fill: #94a3b8; }
+      .flow { stroke: #38bdf8; stroke-width: 2.4; fill: none; stroke-dasharray: 6 6; animation: run 1.2s linear infinite; }
+      .ret { stroke: #94a3b8; stroke-width: 2; fill: none; stroke-linejoin: round; }
+      .tag { fill: #0b1220; stroke: #334155; }
+      @keyframes run { to { stroke-dashoffset: -24; } }
+    </style>
+  </defs>
+
+  <!-- fundo -->
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect width="1280" height="720" fill="url(#grid)" opacity="0.55"/>
+  <rect width="1280" height="720" fill="url(#halo)"/>
+
+  <!-- cabeçalho -->
+  <text x="36" y="66" class="h" font-size="34">Docker</text>
+  <text x="36" y="96" class="s" font-size="15">Da receita ao container em execução, e como as imagens circulam entre as máquinas</text>
+  <g transform="translate(1024 42)">
+    <rect width="220" height="32" rx="16" fill="#0c2236" stroke="#2496ed" stroke-opacity="0.7"/>
+    <text x="110" y="21" text-anchor="middle" class="mono" font-size="12.5" fill="#7dd3fc">$ docker run hello-world</text>
+  </g>
+
+  <!-- setas de ida -->
+  <g>
+    <path class="flow" d="M301 236H345" marker-end="url(#fwd)"/>
+    <path class="flow" d="M616 236H660" marker-end="url(#fwd)"/>
+    <text x="325" y="222" text-anchor="middle" class="mono" font-size="12" font-weight="700" fill="#7dd3fc">build</text>
+    <text x="640" y="222" text-anchor="middle" class="mono" font-size="12" font-weight="700" fill="#7dd3fc">run</text>
+  </g>
+
+  <!-- 1. Dockerfile -->
+  <g transform="translate(36 150)">
+    <rect width="263" height="180" rx="16" fill="url(#card)" stroke="#2a3756"/>
+    <rect x="18" width="227" height="3" rx="1.5" fill="#fbbf24"/>
+    <circle cx="44" cy="46" r="22" fill="#fbbf24" fill-opacity="0.12" stroke="#fbbf24" stroke-opacity="0.5"/>
+    <g fill="none" stroke="#fcd34d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M36 35H48L53 40V57H36Z"/>
+      <path d="M40 45H49M40 50H49"/>
+    </g>
+    <text x="78" y="42" class="h" font-size="16">Dockerfile</text>
+    <text x="78" y="60" class="mono" font-size="11" fill="#fbbf24">a receita</text>
+    <text x="22" y="104" class="p">Sistema base, dependências e o</text>
+    <text x="22" y="124" class="p">comando que inicia a aplicação.</text>
+    <text x="22" y="156" class="mono" font-size="11.5" fill="#94a3b8">FROM · COPY · RUN · CMD</text>
+  </g>
+
+  <!-- 2. Imagem -->
+  <g transform="translate(351 150)">
+    <rect width="263" height="180" rx="16" fill="url(#card)" stroke="#2a3756"/>
+    <rect x="18" width="227" height="3" rx="1.5" fill="#38bdf8"/>
+    <circle cx="44" cy="46" r="22" fill="#38bdf8" fill-opacity="0.12" stroke="#38bdf8" stroke-opacity="0.5"/>
+    <g fill="none" stroke="#7dd3fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M44 36L55 41L44 46L33 41Z"/>
+      <path d="M33 46L44 51L55 46"/>
+      <path d="M33 51L44 56L55 51"/>
+    </g>
+    <text x="78" y="42" class="h" font-size="16">Imagem</text>
+    <text x="78" y="60" class="mono" font-size="11" fill="#38bdf8">pacote imutável</text>
+    <text x="22" y="104" class="p">Tudo pronto para rodar, em</text>
+    <text x="22" y="124" class="p">camadas reaproveitáveis.</text>
+    <text x="22" y="156" class="mono" font-size="11.5" fill="#94a3b8">docker images</text>
+  </g>
+
+  <!-- 3. Container -->
+  <g transform="translate(666 150)">
+    <rect width="263" height="180" rx="16" fill="url(#card)" stroke="#2496ed" stroke-opacity="0.55"/>
+    <rect x="18" width="227" height="3" rx="1.5" fill="#34d399"/>
+    <circle cx="44" cy="46" r="22" fill="#34d399" fill-opacity="0.12" stroke="#34d399" stroke-opacity="0.5"/>
+    <g fill="none" stroke="#6ee7b7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M44 35L54 40.5V51.5L44 57L34 51.5V40.5Z"/>
+      <path d="M34 40.5L44 46L54 40.5M44 46V57"/>
+    </g>
+    <text x="78" y="42" class="h" font-size="16">Container</text>
+    <text x="78" y="60" class="mono" font-size="11" fill="#34d399">imagem em execução</text>
+    <text x="22" y="104" class="p">Processo isolado, com rede,</text>
+    <text x="22" y="124" class="p">portas e volumes próprios.</text>
+    <text x="22" y="156" class="mono" font-size="11.5" fill="#94a3b8">docker ps · docker logs</text>
+  </g>
+
+  <!-- 4. Registry -->
+  <g transform="translate(981 150)">
+    <rect width="263" height="180" rx="16" fill="url(#card)" stroke="#2a3756"/>
+    <rect x="18" width="227" height="3" rx="1.5" fill="#a78bfa"/>
+    <circle cx="44" cy="46" r="22" fill="#a78bfa" fill-opacity="0.12" stroke="#a78bfa" stroke-opacity="0.5"/>
+    <g fill="none" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M36 52H53A5 5 0 0 0 52 42A7 7 0 0 0 39 43A5 5 0 0 0 36 52Z"/>
+    </g>
+    <text x="78" y="42" class="h" font-size="16">Registry</text>
+    <text x="78" y="60" class="mono" font-size="11" fill="#a78bfa">Docker Hub</text>
+    <text x="22" y="104" class="p">Onde as imagens ficam guardadas</text>
+    <text x="22" y="124" class="p">e são compartilhadas.</text>
+    <text x="22" y="156" class="mono" font-size="11.5" fill="#94a3b8">docker login</text>
+  </g>
+
+  <!-- push / pull entre imagem e registry -->
+  <g>
+    <path class="ret" d="M462 330V364H1092V336" marker-end="url(#back)"/>
+    <path class="ret" d="M1132 330V398H502V336" marker-end="url(#back)"/>
+
+    <rect x="740" y="353" width="80" height="22" rx="11" class="tag"/>
+    <text x="780" y="368" text-anchor="middle" class="mono" font-size="12" font-weight="700" fill="#e2e8f0">push</text>
+    <rect x="740" y="387" width="80" height="22" rx="11" class="tag"/>
+    <text x="780" y="402" text-anchor="middle" class="mono" font-size="12" font-weight="700" fill="#e2e8f0">pull</text>
+
+    <text x="1150" y="368" class="s" font-size="11.5">publica a imagem</text>
+    <text x="1150" y="402" class="s" font-size="11.5">baixa a imagem</text>
+  </g>
+
+  <!-- painel: compose -->
+  <g transform="translate(36 474)">
+    <rect width="590" height="206" rx="16" fill="#0f1a2e" stroke="#2a3756"/>
+    <text x="22" y="36" class="h" font-size="16">Compose: vários containers, um arquivo</text>
+
+    <!-- arquivo -->
+    <g transform="translate(26 70)">
+      <rect width="128" height="96" rx="10" fill="#fbbf24" fill-opacity="0.08" stroke="#fbbf24" stroke-opacity="0.5"/>
+      <text x="64" y="28" text-anchor="middle" class="mono" font-size="12" fill="#fcd34d">compose.yaml</text>
+      <g class="mono" font-size="10.5" fill="#94a3b8">
+        <text x="14" y="50">services:</text>
+        <text x="24" y="66">web · app · db</text>
+        <text x="14" y="82">volumes: dados</text>
+      </g>
+    </g>
+    <path class="flow" d="M160 118H196" marker-end="url(#fwd)"/>
+    <text x="178" y="106" text-anchor="middle" class="mono" font-size="10.5" fill="#7dd3fc">up</text>
+
+    <!-- rede -->
+    <path d="M214 160H560" stroke="#38bdf8" stroke-width="2" stroke-dasharray="2 4" stroke-opacity="0.7"/>
+    <text x="560" y="182" text-anchor="end" class="mono" font-size="10.5" fill="#7dd3fc">rede interna</text>
+
+    <!-- containers -->
+    <g class="mono" font-size="12" text-anchor="middle">
+      <g transform="translate(206 80)">
+        <rect width="98" height="56" rx="10" fill="#34d399" fill-opacity="0.10" stroke="#34d399" stroke-opacity="0.6"/>
+        <text x="49" y="25" fill="#e2e8f0">web</text>
+        <text x="49" y="43" font-size="10.5" fill="#94a3b8">8080 → 80</text>
+      </g>
+      <g transform="translate(322 80)">
+        <rect width="98" height="56" rx="10" fill="#34d399" fill-opacity="0.10" stroke="#34d399" stroke-opacity="0.6"/>
+        <text x="49" y="25" fill="#e2e8f0">app</text>
+        <text x="49" y="43" font-size="10.5" fill="#94a3b8">sua aplicação</text>
+      </g>
+      <g transform="translate(438 80)">
+        <rect width="98" height="56" rx="10" fill="#34d399" fill-opacity="0.10" stroke="#34d399" stroke-opacity="0.6"/>
+        <text x="49" y="25" fill="#e2e8f0">db</text>
+        <text x="49" y="43" font-size="10.5" fill="#94a3b8">banco</text>
+      </g>
+    </g>
+    <path d="M255 136V160M371 136V160M487 136V160" stroke="#38bdf8" stroke-width="2" stroke-opacity="0.7"/>
+    <!-- volume -->
+    <g fill="none" stroke="#c4b5fd" stroke-width="1.8">
+      <ellipse cx="558" cy="98" rx="10" ry="4"/>
+      <path d="M548 98V114C548 116.5 552.5 118 558 118C563.5 118 568 116.5 568 114V98"/>
+    </g>
+    <path d="M536 108H546" stroke="#c4b5fd" stroke-width="1.5" stroke-dasharray="2 2"/>
+    <text x="558" y="74" text-anchor="middle" class="mono" font-size="10" fill="#c4b5fd">volume</text>
+  </g>
+
+  <!-- painel: comandos -->
+  <g transform="translate(654 474)">
+    <rect width="590" height="206" rx="16" fill="#0f1a2e" stroke="#2a3756"/>
+    <text x="22" y="36" class="h" font-size="16">Comandos do dia a dia</text>
+    <g class="mono" font-size="12.5">
+      <g transform="translate(22 56)">
+        <circle cx="12" cy="12" r="12" fill="#2496ed" fill-opacity="0.15" stroke="#2496ed"/>
+        <text x="12" y="16.5" text-anchor="middle" font-size="12" font-weight="700" fill="#7dd3fc">1</text>
+        <text x="36" y="17" fill="#e2e8f0">docker run -d -p 8080:80 --name web nginx</text>
+      </g>
+      <g transform="translate(22 90)">
+        <circle cx="12" cy="12" r="12" fill="#2496ed" fill-opacity="0.15" stroke="#2496ed"/>
+        <text x="12" y="16.5" text-anchor="middle" font-size="12" font-weight="700" fill="#7dd3fc">2</text>
+        <text x="36" y="17" fill="#e2e8f0">docker ps</text>
+        <text x="236" y="17" fill="#64748b"># o que está rodando</text>
+      </g>
+      <g transform="translate(22 124)">
+        <circle cx="12" cy="12" r="12" fill="#2496ed" fill-opacity="0.15" stroke="#2496ed"/>
+        <text x="12" y="16.5" text-anchor="middle" font-size="12" font-weight="700" fill="#7dd3fc">3</text>
+        <text x="36" y="17" fill="#e2e8f0">docker logs -f web</text>
+        <text x="236" y="17" fill="#64748b"># acompanha os logs</text>
+      </g>
+      <g transform="translate(22 158)">
+        <circle cx="12" cy="12" r="12" fill="#2496ed" fill-opacity="0.15" stroke="#2496ed"/>
+        <text x="12" y="16.5" text-anchor="middle" font-size="12" font-weight="700" fill="#7dd3fc">4</text>
+        <text x="36" y="17" fill="#e2e8f0">docker compose up -d</text>
+        <text x="236" y="17" fill="#64748b"># sobe a stack inteira</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- rodapé -->
+  <text x="640" y="706" text-anchor="middle" class="mono" font-size="11" fill="#475569">github.com/Jarderl/Docker</text>
+</svg>
